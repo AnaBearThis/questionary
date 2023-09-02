@@ -5,7 +5,8 @@ import Interview from '../pages/Interview.vue'
 const routes = [
     {
         path: '/',
-        component: ListOfRespondents
+        component: ListOfRespondents,
+        props: { pageName: 'List of Respondents' }
     },
     {
         path: '/interview',
