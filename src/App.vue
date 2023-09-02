@@ -13,7 +13,11 @@
             Header
         },
         data() {
-            
+            return {
+                respondents: [
+                    {fullName: 'vasya', email: 'test@test.ru', phone: 88888888888, result: '10/10'}
+                ]
+            }
         },
         methods: {
             
