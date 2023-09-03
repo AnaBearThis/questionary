@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <Header/>
-        <router-view v-bind:respondents="respondents"></router-view>
+        <router-view :respondents="respondents" @create="saveUser"></router-view>
     </div>
 </template>
 
@@ -15,13 +15,14 @@
         data() {
             return {
                 respondents: [
-                    {name: 'vasya', email: 'test@test.ru', phone: 88888888888, result: '10/10'},
-                    {name: 'naruto', email: 'aaaa', phone: 333, result: '100/10'}
+                 
                 ]
             }
         },
         methods: {
-            
+            saveUser(newUser) {
+                this.respondents.unshift(newUser)
+            }
         }
     }
 </script>

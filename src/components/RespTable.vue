@@ -37,6 +37,7 @@
         width: 100%;
         min-height: 828px;
         border: 1px solid #DDE1E6;
+        border-radius: 6px;
         display: grid;
         align-content: start;
         grid-template-columns: repeat(4, minmax(150px, 1fr));

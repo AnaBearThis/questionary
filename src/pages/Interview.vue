@@ -1,7 +1,7 @@
 <template>
     <section class="interview">
-        <PageHeading v-bind:pageName="pageName"/>
-        <UserData/>
+        <PageHeading :pageName="pageName"/>
+        <UserData @create="goToQuest"/>
         <router-view></router-view>
     </section>
 </template>
@@ -17,6 +17,11 @@
         data() {
             return {
                 pageName: 'Interview'
+            }
+        },
+        methods: {
+            goToQuest(newUser) {
+                this.$emit('create', newUser);
             }
         }
     }

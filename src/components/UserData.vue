@@ -1,6 +1,6 @@
 <template>
   <section class="user-data">
-    <form class="user-data__form">
+    <form class="user-data__form" @submit.prevent="saveUser">
       <div class="user-data__container">
         <label class="user-data__name" htmlFor="input-name"> Full Name </label>
         <input
@@ -8,6 +8,7 @@
           id="input-name"
           type="text"
           name="name"
+          v-model="newUser.name"
           pattern="[a-zA-Zа-яА-ЯёЁ\- ]*"
           title="Поле Имя должно содержать только латиницу, кириллицу, пробел или дефис."
           placeholder="Full Name"
@@ -25,6 +26,7 @@
           id="input-email"
           type="email"
           name="email"
+          v-model="newUser.email"
           pattern="^\S+@\S+\.\S+$"
           title="Поле E-mail должно содержать действительный e-mail адрес."
           placeholder="E-mail"
@@ -40,6 +42,7 @@
           id="input-password"
           type="tel"
           name="phone"
+          v-model="newUser.phone"
           placeholder="+7__________"
           minLength="12"
           maxLength="12"
@@ -51,7 +54,7 @@
         <router-link class="user-data__button user-data__button_type_back" to="/">
             Вернуться к списку
         </router-link>
-        <button class="user-data__button user-data__button_type_submit" type="submit" value="save">
+        <button class="user-data__button user-data__button_type_submit" type="submit" value="save" @click="saveUser">
             Начать опрос
         </button>
       </div>  
@@ -63,8 +66,26 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+        newUser: {
+            name: '',
+            email: '',
+            phone: '',
+            result: '0/10'
+        }
+    };
   },
+  methods: {
+    saveUser() {
+        this.newUser.id = Date.now();
+        this.$emit('create', this.newUser);
+        // this.newUser = {
+        //     name: '',
+        //     email: '',
+        //     phone: ''
+        // };
+    }
+  }
 };
 </script>
 

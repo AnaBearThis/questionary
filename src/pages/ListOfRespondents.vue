@@ -1,7 +1,7 @@
 <template>
     <section class="list-of-respondents">
-        <PageHeading v-bind:pageName="pageName"/>
-        <RespTable v-bind:respondents="respondents"/>
+        <PageHeading :pageName="pageName"/>
+        <RespTable :respondents="respondents"/>
     </section>
 </template>
 
