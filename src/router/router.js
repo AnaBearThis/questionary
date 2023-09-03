@@ -10,7 +10,13 @@ const routes = [
     },
     {
         path: '/interview',
-        component: Interview
+        component: Interview,
+        children: [
+            {
+              path: 'step-one',
+            //   component: StepOne
+            },
+        ]    
     }
 ]
 

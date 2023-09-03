@@ -1,7 +1,7 @@
 <template>
     <section class="list-of-respondents">
         <PageHeading v-bind:pageName="pageName"/>
-        <RespTable/>
+        <RespTable v-bind:respondents="respondents"/>
     </section>
 </template>
 
@@ -16,6 +16,11 @@
         data() {
             return {
                 pageName: 'List of Respondents'
+            }
+        },
+        props: {
+            respondents: {
+                type: Array
             }
         }
     }

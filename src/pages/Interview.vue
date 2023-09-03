@@ -1,14 +1,18 @@
 <template>
     <section class="interview">
         <PageHeading v-bind:pageName="pageName"/>
+        <UserData/>
+        <router-view></router-view>
     </section>
 </template>
 
 <script>
     import PageHeading from '../components/PageHeading.vue';
+    import UserData from '../components/UserData.vue'
     export default {
         components: {
             PageHeading,
+            UserData
         },
         data() {
             return {

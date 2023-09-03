@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <Header/>
-        <router-view></router-view>
+        <router-view v-bind:respondents="respondents"></router-view>
     </div>
 </template>
 
@@ -15,7 +15,8 @@
         data() {
             return {
                 respondents: [
-                    {fullName: 'vasya', email: 'test@test.ru', phone: 88888888888, result: '10/10'}
+                    {name: 'vasya', email: 'test@test.ru', phone: 88888888888, result: '10/10'},
+                    {name: 'naruto', email: 'aaaa', phone: 333, result: '100/10'}
                 ]
             }
         },

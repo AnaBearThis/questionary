@@ -8,12 +8,12 @@
                 <th class="list-of-respondents__table_heading">Result</th>
             </tr>
         </thead>
-        <tbody class="list-of-respondents__table_body">
+        <tbody class="list-of-respondents__table_body" v-for="resp in respondents">
             <tr class="list-of-respondents__table_row">
-                <td class="list-of-respondents__table_cell">Name 1</td>
-                <td class="list-of-respondents__table_cell">test@test</td>
-                <td class="list-of-respondents__table_cell">+79998887766</td>
-                <td class="list-of-respondents__table_cell">10/10</td>
+                <td class="list-of-respondents__table_cell">{{ resp.name }}</td>
+                <td class="list-of-respondents__table_cell">{{ resp.email }}</td>
+                <td class="list-of-respondents__table_cell">{{ resp.phone }}</td>
+                <td class="list-of-respondents__table_cell">{{ resp.result }}</td>
             </tr>
         </tbody>
 
@@ -21,9 +21,12 @@
 </template>
 
 <script>
-    
     export default {
-        
+        props: {
+            respondents: {
+                type: Array
+            }
+        }
     }
 </script>
 
