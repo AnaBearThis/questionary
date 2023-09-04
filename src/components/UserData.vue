@@ -51,10 +51,10 @@
       </div>
       <span id="input-phone-error" name="phone" class="error"> </span>
       <div class="user-data__nav">
-        <router-link class="user-data__button user-data__button_type_back" to="/">
+        <router-link class="button button__type_blue" to="/">
             Вернуться к списку
         </router-link>
-        <button class="user-data__button user-data__button_type_submit" type="submit" value="save" @click="saveUser">
+        <button class="button button__type_green" type="submit" value="save" @click="saveUser">
             Начать опрос
         </button>
       </div>  
@@ -79,11 +79,6 @@ export default {
     saveUser() {
         this.newUser.id = Date.now();
         this.$emit('create', this.newUser);
-        // this.newUser = {
-        //     name: '',
-        //     email: '',
-        //     phone: ''
-        // };
     }
   }
 };
@@ -140,27 +135,5 @@ export default {
     .user-data__nav {
         display: flex;
         justify-content: space-between;
-    }
-    .user-data__button {
-        margin: 0;
-        padding: 8px 12px;
-        font-size: 16px;
-        line-height: 28px;
-        font-weight: 500;
-        text-decoration: none;
-        color: #F2F2F2;
-        border: none;
-        border-radius: 6px;
-        transition: opacity 0.6s;
-    }
-    .user-data__button:hover {
-        opacity: 0.5;
-        cursor: pointer;
-    }
-    .user-data__button_type_back {
-        background-color: #2F54EB;
-    }
-    .user-data__button_type_submit {
-        background-color: #27AE60;
     }
 </style>

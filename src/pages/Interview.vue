@@ -1,18 +1,15 @@
 <template>
     <section class="interview">
         <PageHeading :pageName="pageName"/>
-        <UserData @create="goToQuest"/>
-        <router-view></router-view>
+        <router-view @create="goToQuest"></router-view>
     </section>
 </template>
 
 <script>
     import PageHeading from '../components/PageHeading.vue';
-    import UserData from '../components/UserData.vue'
     export default {
         components: {
             PageHeading,
-            UserData
         },
         data() {
             return {
@@ -22,6 +19,7 @@
         methods: {
             goToQuest(newUser) {
                 this.$emit('create', newUser);
+                this.$router.push({ path: '/interview/step-one' })
             }
         }
     }

@@ -3,21 +3,16 @@
         <div class="header__container">
             <h1 class="header__heading">Interview</h1>
             <div class="header__link-container">
-                <ButtonList/>
-                <ButtonTakeQuest/>
+                <router-link class="button button__type_blue" to="/">Список опрошенных</router-link>
+                <router-link class="button button__type_green" to="/interview/user-data">Пройти опрос</router-link>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import ButtonList from "./ButtonList.vue";
-    import ButtonTakeQuest from "./ButtonTakeQuest.vue";
     export default {
-        components: {
-            ButtonList,
-            ButtonTakeQuest
-        }
+        
     }
 </script>
 
