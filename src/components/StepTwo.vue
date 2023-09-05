@@ -1,7 +1,7 @@
 <template>
     <section class="step-two">
       <InterviewProgress/>
-      <form class="step__form" @submit.prevent="">
+      <form class="step__form" @submit.prevent="goNext">
         <div class="step__container">
           <label class="interview__question" htmlFor="input-name"> Вы робот? </label>
           <input
@@ -10,6 +10,7 @@
             type="text"
             name="name"
             placeholder="Ответ"
+            v-model="answer"
           />
         </div>
         <div class="question__nav">
@@ -30,11 +31,18 @@
       components: {
         InterviewProgress
       },
-      // data() {
-        
-      // },
+      data() {
+        return {
+          answer: localStorage.stepTwo || ''
+        }
+      },
       methods: {
-        
+        goNext() {
+            if (this.answer !== '') {
+                JSON.stringify(localStorage.setItem('stepTwo', this.answer))
+            }
+          this.$router.push({ path: '/interview/step-three' })
+        }
       }
     };
   </script>

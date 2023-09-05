@@ -1,11 +1,11 @@
 <template>
     <section class="step-four">
       <InterviewProgress/>
-      <form class="step__form" @submit.prevent="">
+      <form class="step__form" @submit.prevent="goNext">
         <div class="step__container">
           <label class="interview__question" htmlFor="input-district"> Ваш любимый район в Костроме: </label>
-          <select class="interview__input interview__input_type_select">
-            <option class="interview__input_option" value="not-chosen">Не выбрано</option>
+          <select class="interview__input interview__input_type_select" v-model="answer">
+            <option class="interview__input_option" value="not-chosen">Нет такого</option>
             <option class="interview__input_option" value="fab-district">Фабричный</option>
             <option class="interview__input_option" value="center-district">Центральный</option>
             <option class="interview__input_option" value="volga-district">Заволжский</option>
@@ -29,11 +29,19 @@
       components: {
         InterviewProgress
       },
-      // data() {
-        
-      // },
+      data() {
+        return {
+          answer: localStorage.stepFour || ''
+        }
+      },
       methods: {
-        
+        goNext() {
+            if (this.answer !== '') {
+                JSON.stringify(localStorage.setItem('stepFour', this.answer))
+            }
+          
+          this.$router.push({ path: '/interview/step-five' })
+        }
       }
     };
   </script>

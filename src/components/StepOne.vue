@@ -1,7 +1,7 @@
 <template>
     <section class="step-one">
       <InterviewProgress/>
-      <form class="step__form" @submit.prevent="">
+      <form class="step__form" @submit.prevent="goNext" @create="check">
         <div class="step__container">
           <label class="interview__question" htmlFor="input-name"> Какое сегодня число? </label>
           <input
@@ -10,6 +10,7 @@
             type="date"
             name="name"
             placeholder="Ответ"
+            v-model="answer"
           />
         </div>
         <div class="question__nav">
@@ -27,11 +28,21 @@
       components: {
         InterviewProgress
       },
-      // data() {
-        
-      // },
+      data() {
+        return {
+          answer: localStorage.stepOne || ''
+        }
+      },
       methods: {
-        
+        goNext() {
+          if (this.answer !== '') {
+                JSON.stringify(localStorage.setItem('stepOne', this.answer))
+            }
+          this.$router.push({ path: '/interview/step-two' })
+        },
+        check(newUser) {
+          console.log(newUser)
+        }
       }
     };
   </script>

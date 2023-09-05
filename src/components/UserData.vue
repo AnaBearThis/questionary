@@ -8,7 +8,7 @@
           id="input-name"
           type="text"
           name="name"
-          v-model="newUser.name"
+          @input="handleNameInput"
           pattern="[a-zA-Zа-яА-ЯёЁ\- ]*"
           title="Поле Имя должно содержать только латиницу, кириллицу, пробел или дефис."
           placeholder="Full Name"
@@ -26,7 +26,7 @@
           id="input-email"
           type="email"
           name="email"
-          v-model="newUser.email"
+          @input="handleEmailInput"
           pattern="^\S+@\S+\.\S+$"
           title="Поле E-mail должно содержать действительный e-mail адрес."
           placeholder="E-mail"
@@ -42,7 +42,7 @@
           id="input-password"
           type="tel"
           name="phone"
-          v-model="newUser.phone"
+          @input="handlePhoneInput"
           placeholder="+7__________"
           minLength="12"
           maxLength="12"
@@ -68,17 +68,50 @@ export default {
   data() {
     return {
         newUser: {
-            name: '',
-            email: '',
-            phone: '',
-            result: '0/10'
+            name: localStorage.userName || '',
+            email: localStorage.userEmail || '',
+            phone: localStorage.userPhone || '',
+            result: this.newResult
         }
     };
   },
   methods: {
+    handleNameInput(e) {
+      this.newUser.name = e.target.value
+      localStorage.setItem('userName', this.newUser.name)
+    },
+    handleEmailInput(e) {
+      this.newUser.email = e.target.value
+      localStorage.setItem('userEmail', this.newUser.email)
+    },
+    handlePhoneInput(e) {
+      this.newUser.phone = e.target.value
+      localStorage.setItem('userPhone', this.newUser.phone)
+    },
     saveUser() {
         this.newUser.id = Date.now();
         this.$emit('create', this.newUser);
+    }
+  },
+  computed: {
+    newResult() {
+      this.newUser.result = 0
+      if (localStorage.stepOne) {
+        this.newUser.result += 2
+      }
+      if (localStorage.stepTwo) {
+        this.newUser.result += 2
+      }
+      if (localStorage.stepThree) {
+        this.newUser.result += 2
+      }
+      if (localStorage.stepFour) {
+        this.newUser.result += 2
+      }
+      if (localStorage.stepFive) {
+        this.newUser.result += 2
+      }
+      return this.newUser.result
     }
   }
 };
