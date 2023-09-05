@@ -25,7 +25,7 @@ export default {
     respondents: {
       type: Array,
     },
-  }
+  },
 };
 </script>
 

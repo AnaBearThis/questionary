@@ -37,12 +37,7 @@
         <router-link class="button button__type_blue" to="/interview/step-four">
           Вернуться назад
         </router-link>
-        <button
-          class="button button__type_green"
-          type="submit"
-          value="save"
-          @click="saveUser"
-        >
+        <button class="button button__type_green" type="submit" value="save">
           Завершить опрос
         </button>
       </div>
@@ -59,7 +54,7 @@ export default {
   data() {
     return {
       answer: "",
-      yesChecked: localStorage.stepFiveYes || false,
+      yesChecked: false,
       noChecked: false,
     };
   },
@@ -68,7 +63,8 @@ export default {
       if (this.answer !== "") {
         JSON.stringify(localStorage.setItem("stepFive", this.answer));
       }
-
+      const result = this.newResult;
+      this.$emit("showResult", result);
       this.$router.push({ path: "/" });
     },
     checkInputYes(e) {
@@ -78,6 +74,27 @@ export default {
     checkInputNo(e) {
       this.answer = e.target.value;
       JSON.stringify(localStorage.setItem("stepFive", this.answer));
+    },
+  },
+  computed: {
+    newResult() {
+      this.result = 0;
+      if (localStorage.stepOne) {
+        this.result += 2;
+      }
+      if (localStorage.stepTwo) {
+        this.result += 2;
+      }
+      if (localStorage.stepThree) {
+        this.result += 2;
+      }
+      if (localStorage.stepFour) {
+        this.result += 2;
+      }
+      if (localStorage.stepFive) {
+        this.result += 2;
+      }
+      return this.result;
     },
   },
 };

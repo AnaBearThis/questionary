@@ -26,8 +26,11 @@
             class="step__status"
             src="../images/question-not-done.svg"
           />
-          <img v-if="isStepOneCompleted && !onStepOne" class="step__status"
-            src="../images/question-done.svg"/>
+          <img
+            v-if="isStepOneCompleted && !onStepOne"
+            class="step__status"
+            src="../images/question-done.svg"
+          />
           <p class="step__number" @mouseover="checkPage">Вопрос 1</p>
         </div>
       </router-link>
@@ -182,13 +185,13 @@ export default {
   },
   props: {
     completed: {
-        type: Boolean
-    }
+      type: Boolean,
+    },
   },
   methods: {
     checkPage() {
       console.log(this.$route);
-      console.log(localStorage.stepOne)
+      console.log(localStorage.stepOne);
     },
   },
 };
