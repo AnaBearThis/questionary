@@ -32,6 +32,7 @@ export default {
   background-color: #f2f2f2;
 }
 .header__container {
+  max-width: 1440px;
   margin: 0 120px;
   display: flex;
   align-items: center;

@@ -37,7 +37,7 @@ export default {
 
 <style>
 .body {
-  max-width: 1440px;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;

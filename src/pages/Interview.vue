@@ -29,6 +29,7 @@ export default {
 
 <style>
 .interview {
+  max-width: 1440px;
   margin: 0;
   padding: 30px 90px 47px;
 }
